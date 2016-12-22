@@ -3,7 +3,7 @@
 
 ## 来源
 
-由我和 @JxJayden 共同开发的企业内容管理系统。此版本移除了七牛云密钥及加密密钥，并以 `.demo.js`做结尾。
+由我和 [@JxJayden](https://github.com/JxJayden) 共同开发的企业内容管理系统。此版本移除了七牛云密钥及加密密钥，并以 `.demo.js`做结尾。
 
 ## 使用
 
@@ -12,7 +12,8 @@ git clone
 cd f2e/admin && npm install
 cd server && npm install
 cd f2e/admin && npm run dev (npm run build)
-cd server && npm run render
+cd server && npm run dev (npm run product)
+cd server && npm run render (npm run render-product)
 cd server && node schedule.js
 
 #之后需要配置 `nginx` 根据 `/api`前缀反向代理本地 `3000` 端口。默认代理 `3001` 渲染端口。

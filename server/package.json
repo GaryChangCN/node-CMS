@@ -1,13 +1,14 @@
 {
   "name": "server-for-admin",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "author": "GaryChangCN & JxJayden",
   "scripts": {
     "initAdmin": "node initAdmin",
     "dev": "cross-env NODE_ENV=dev  supervisor ./app.js",
     "render": "cross-env NODE_ENV=dev  supervisor ./renderApp.js",
-    "product": "node app.js"
+    "product": "node app.js",
+    "render-product":"node render.js"
   },
   "dependencies": {
     "archiver": "^1.3.0",
