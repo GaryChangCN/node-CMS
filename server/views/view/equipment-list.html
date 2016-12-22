@@ -1,0 +1,34 @@
+{{include "../public/html-header"}}
+<link href="/css/equipment-list.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="head-container">
+    <div class="head">
+        <div class="head-title">{{chinese ? pinsetler.name : pinsetler.englishName}}</div>
+        <div class="breadcrumbs">
+            <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+            <span>{{chinese ? "产品" : "Product"}}</span><span>/</span>
+            <span>{{chinese ? "设备与系统" : "Equipment & Systems"}}</span><span>/</span>
+            <span>{{chinese ? pinsetler.name : pinsetler.englishName}}</span>
+        </div>
+    </div>
+</div>
+<div class="project-container">
+    {{each pinsetler.children}}
+        <div class="project-item">
+            <div class="info">
+                <div class="title">{{chinese ? $value.name : $value.englishName}}</div>
+                <div class="ctx">{{chinese ? $value.description : $value.englishDescription}}</div>
+                <a href="/equipment-detail.html?_id={{$value._id.toString()}}{{chinese ? "" : "&language=en"}}">{{chinese ? "查看更多" : "Learn more"}}</a>
+            </div>
+            <div class="img-container">
+                {{if $value.media && $value.media.length > 0}}
+                    <img src="{{$value.media[0].link}}" alt="asdfdasf">
+                {{else}}
+                    <img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E6%95%B4%E5%A5%97%E8%AE%BE%E5%A4%87%E9%A2%91%E9%81%93%E9%A1%B5.jpg" alt="default image">
+                {{/if}}
+            </div>
+        </div>
+    {{/each}}
+</div>
+{{include "./footer"}}
+{{include "../public/html-footer"}}

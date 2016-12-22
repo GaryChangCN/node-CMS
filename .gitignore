@@ -1,0 +1,14 @@
+*log
+f2e/admin/node_modules/
+f2e/admin/dist/
+f2e/user/node_modules/
+f2e/user/dist/
+server/node_modules/
+server/public/static/
+server/public/pic/*.jpg
+server/public/pic/*.png
+server/public/pic/*.gif
+server/public/pdf/*.pdf
+server/schedule.js
+server/lib/cry.js
+**/.vscode

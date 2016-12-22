@@ -1,0 +1,125 @@
+{{include "../public/html-header"}}
+<link href="/css/search.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//ohnpdrepj.bkt.clouddn.com/blueimp-gallery-change.min.css"> {{include "./nav"}}
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div class="content-container" id="search-content">
+</div>
+<script id="search-template" type="text/html">
+    <%if isNull%>
+        <div class="head-container">
+            <div class="head">
+                <div class="head-title">
+                    <%chinese ?
+                    "很抱歉，未能搜索到匹配的内容，请尝试其他关键词并再次搜索..." :
+                    "Sorry, there is no matching result found, please try other keywords and search again…"%>
+                </div>
+            </div>
+        </div>
+        <div class="search-content">
+            <input class="search" value="<%keywords%>" placeholder="{{chinese ? navBar.placeholder.content : navBar.placeholder.contentEn}}">
+            <a href="javascript:void(0)" class="iconfont to-search">&#xe651;</a>
+        </div>
+        <div class="main-container">
+            <div class="main" style="padding: 20px; box-sizing: border-box;">
+                <%chinese ?
+                "很抱歉，未能搜索到匹配的内容，请尝试其他关键词并再次搜索..." :
+                "Sorry, there is no matching result found, please try other keywords and search again…"%>
+            </div>
+        </div>
+    <%else%>
+        <div class="head-container">
+            <div class="head">
+                <div class="head-title">
+                    <%chinese ?
+                "以下为 " + keywords + " 的搜索结果" :
+                "Search results for" + keywords%>
+                </div>
+            </div>
+        </div>
+        <div class="search-content">
+            <input class="search" type="search" value="<%keywords%>" placeholder="{{chinese ? navBar.placeholder.content : navBar.placeholder.contentEn }}">
+            <a href="javascript:void(0)" class="iconfont to-search">&#xe651;</a>
+        </div>
+        <div class="main-container">
+            <div class="main">
+                <div class="tab">
+                    <a href="javascript:void(0)" data-type="product" class="tab-item item-select">
+                        <%chinese ? "产品" : "Product"%> (<%productLength%>)
+                    </a>
+                    <a href="javascript:void(0)" data-type="explore" class="tab-item">
+                        <%chinese ? "探索" : "Explore"%> (<%articleLength%>)
+                    </a>
+                </div>
+                <div class="card" id="product">
+                    <%each productList%>
+                        <div class="card-item">
+                            <span class="img-container">
+                                <%if $value.media && $value.media.length > 0%>
+                                    <img src="<%$value.media[0].link%>" alt="<%chinese ? $value.media[0].alt : $value.media[0].altEn%>">
+                                <%else%>
+                                    <img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" alt="default iamge">
+                                <%/if%>
+                            </span>
+                            <div class="info-container">
+                                <div class="number">
+                                    <%$value.number ? $value.number : "暂无编号"%>
+                                </div>
+                                <div class="more iconfont">&#xe793;</div>
+                                <div class="name">
+                                    <%chinese ? $value.name : $value.englishName%>
+                                </div>
+                                <div class="star iconfont" id="star-off" data-id="<%$value._id.toString()%>">&#xe754;</div>
+                                <div class="star star-hide iconfont" id="star-on" data-id="<%$value._id.toString()%>">&#xe6bc;</div>
+                                <%if $value.media && $value.media.length > 0%>
+                                    <div class="img-more"><%chinese ? "点击查看大图" : "Click to view more"%>
+                                        <%each $value.media%>
+                                            <a href="<%$value.link%>"></a>
+                                        <%/each%>
+                                    </div>
+                                <%else%>
+                                    <div class="img-more"><%chinese ? "点击查看大图" : "Click to view more"%>
+                                        <a href="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png"></a>
+                                    </div>
+                                <%/if%>
+                            </div>
+                            <div class="card-cover card-cover-hide">
+                                <div class="card-cover-title">
+                                    <%chinese ? $value.name : $value.englishName%>
+                                        <span class="iconfont close-card-cover">&#xe6cc;</span>
+                                </div>
+                                <div class="des">
+                                    <%chinese ? $value.description : $value.englishDescription%>
+                                </div>
+                            </div>
+                        </div>
+                        <%/each%>
+                </div>
+                <div class="explore hidden" id="explore">
+                    <%each articleList as item %>
+                        <div class="explore-item">
+                            <h2>
+                                <%item.title%>
+                            </h2>
+                            <div>
+                                <%#item.content%>
+                            </div>
+                        </div>
+                        <%/each%>
+                </div>
+            </div>
+        </div>
+    <%/if%>
+</script>
+{{include "./footer"}}
+<script src="//ohnpdrepj.bkt.clouddn.com/blueimp-gallery.min.js"></script>
+<script type="text/javascript" src="/js/search.min.js"></script>
+{{include "../public/html-footer"}}

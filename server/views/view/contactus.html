@@ -1,0 +1,47 @@
+{{include "../public/html-header"}}
+<link href="/css/contactus.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="banner-container">
+    <div class="banner">
+        {{if contactusBanner}}
+            <img src="{{contactusBanner.link}}" alt="{{chinese ? contactusBanner.alt : contactusBanner.altEn}}">
+        {{else}}
+            <img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4banner.png" alt="default banner">
+        {{/if}}
+    </div>
+</div>
+<div class="contact-container">
+    {{each contact}}
+        <div class="contact-group">
+            <div class="title">{{chinese ? $value.title : $value.titleEn}}</div>
+            {{each $value.list}}
+                <div class="contact">
+                    <div class="item">
+                        <p class="item-title">{{chinese ? "姓名：" : "NAME: "}}</p>
+                        <p class="item-text">{{chinese ? $value.name : $value.nameEn}}</p>
+                    </div>
+                    <div class="item">
+                        <p class="item-title">{{chinese ? "职位：" : "POSITION: "}}</p>
+                        <p class="item-text">{{chinese ? $value.position : $value.positionEn}}</p>
+                    </div>
+                    <div class="item">
+                        <p class="item-title">{{chinese ? "电话：" : "MOBILE: "}}</p>
+                        <p class="item-text">{{$value.mobile}}</p>
+                    </div>
+                    <div class="item">
+                        <p class="item-title">{{chinese ? "邮箱：" : "EMAIL: "}}</p>
+                        <p class="item-text">{{$value.email}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
+</div>
+<div class="map-wcontainer">
+    <div id="map" class="map"></div>
+    <div id="panel" class="map-panel"></div>
+</div>
+{{include "./footer"}}
+<script type="text/javascript" src="//webapi.amap.com/maps?v=1.3&key=7978d6dfec3cc518f9565a8040bfbd3b"></script>
+<script type="text/javascript" src="/js/contactus.min.js"></script>
+{{include "../public/html-footer"}}

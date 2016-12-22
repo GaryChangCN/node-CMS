@@ -1,0 +1,159 @@
+<link href="/css/nav.min.css" rel="stylesheet">
+<div class="pc-navbar">
+    <div class="nav">
+        <div class="nav-container">
+            <a href="index.html{{chinese ? "" : "?language=en"}}" class="logo">
+                {{if navBar.logo}}
+                    <img src="{{navBar.logo.link}}" alt="{{chinese ? navBar.logo.alt : navBar.logo.altEn }}">
+                {{else}}
+                    <img src="http://ohnpdrepj.bkt.clouddn.com/xsylogo.png" alt="xsy logo">
+                {{/if}}
+            </a>
+            <ul class="nav-ul">
+                <li class="nav-li product"><a href="javascript:void(0)">{{chinese ? "产品" : "Product"}}</a></li>
+                <li class="nav-li"><a href="/project.html{{chinese ? "" : "?language=en"}}">{{chinese ? "工程" : "Project"}}</a></li>
+                <li class="nav-li"><a href="/center.html{{chinese ? "" : "?language=en"}}">{{chinese ? "球馆" : "Center"}}</a></li>
+                <li class="nav-li"><a href="/support.html{{chinese ? "" : "?language=en"}}">{{chinese ? "支持" : "Support"}}</a></li>
+                <li class="nav-li"><a href="/contactus.html{{chinese ? "" : "?language=en"}}">{{chinese ? "联系我们" : "Contact Us"}}</a></li>
+                <div class="clear"></div>
+            </ul>
+            <div class="toggle-language">
+                <a data-language="cn" class="select-language {{chinese ? "select" : ""}}" alt="切换到中文">中</a>
+                <span>|</span>
+                <a data-language="en" class="select-language {{chinese ? "" : "select"}}" alt="switch language to English">EN</a>
+            </div>
+            <a href="javascript:void(0)" class="love pc-love"><i class="love-icon iconfont">&#xe6c2;</i> {{chinese ? "我的询单" : "My Quote"}}</a>
+            <div class="search-content">
+                <input id="search" class="search" name="" value="" placeholder="{{chinese ? navBar.placeholder.content : navBar.placeholder.contentEn }}">
+                <a href="javascript:void(0)" class="iconfont to-search" id="startPcSearch">&#xe651;</a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="slide-down" id="slide-down">
+        <div class="slide-down-container">
+            {{each navBar.product}}
+                <div class="item">
+                    <div class="title">{{chinese ? $value.name : $value.englishName}}</div>
+                    <ul>
+                        {{each $value.children}}
+                            {{if $value.extra}}
+                                {{if $value.extra === "pinsetler"}}
+                                    <li><a href="/equipment-list.html{{chinese ? "" : "?language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                                {{else}}
+                                    <li><a href="/equip-product.html?extra={{$value.extra}}{{chinese ? "" : "&language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                                {{/if}}
+                            {{else}}
+                                <li><a href="/part-product.html?second={{$value._id.toString()}}{{chinese ? "" : "&language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                            {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            {{/each}}
+            {{if navBar.panelPicture}}
+                <img src="{{navBar.panelPicture.link}}" alt="{{chinese ? navBar.panelPicture.alt : navBar.panelPicture.altEn}}">
+            {{else}}
+                <img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4banner.png" alt="default image">
+            {{/if}}
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="mobile-navbar">
+    <div class="nav">
+        <a href="javascript:void(0)" class="iconfont open-slide-down">&#xe606;</a>
+        <a href="javascript:void(0)" class="iconfont open-slide-up">&#xe6cc;</a>
+        <a href="index.html{{chinese ? "" : "?language=en"}}" class="logo mobile-logo">
+            {{if navBar.logo}}
+                <img src="{{navBar.logo.link}}" alt="{{chinese ? navBar.logo.alt : navBar.logo.altEn}}">
+            {{else}}
+                <img src="" alt="xsy logo">
+            {{/if}}
+        </a>
+    </div>
+    <div class="slide-down">
+        <ul class="list">
+            {{each navBar.product}}
+            <li class="item product">{{chinese ? $value.name : $value.englishName}}</li>
+            <ul class="product-slide-down">
+                {{each $value.children}}
+                    {{if $value.extra}}
+                        {{if $value.extra === 'pinsetler'}}
+                            <li><a href="/equipment-list.html{{chinese ? "" : "?language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                        {{else}}
+                            <li><a href="/equip-product.html?extra={{$value.extra}}{{chinese ? "" : "&language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                        {{/if}}
+                    {{else}}
+                        <li><a href="/part-product.html?second={{$value._id.toString()}}{{chinese ? "" : "&language=en"}}">{{chinese ? $value.name : $value.englishName}}</a></li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+            {{/each}}
+            <li class="item"><a href="/project.html{{chinese ? "" : "?language=en"}}">{{chinese ? "工程" : "Project"}}</a></li>
+            <li class="item"><a href="/center.html{{chinese ? "" : "?language=en"}}">{{chinese ? "球馆" : "Center"}}</a></li>
+            <li class="item"><a href="/support.html{{chinese ? "" : "?language=en"}}">{{chinese ? "支持" : "Support"}}</a></li>
+            <li class="item"><a href="/contactus.html{{chinese ? "" : "?language=en"}}">{{chinese ? "联系我们" : "Contact Us"}}</a></li>
+            <li class="item search-content">
+                <a href="javascript:void(0)" class="open-mobile-search">{{chinese ? "搜索" : "Search"}}</a>
+                <div class="search" >
+                    <input id="search" name="" placeholder="{{chinese ? navBar.placeholder.content : navBar.placeholder.contentEn }}">
+                    <a href="javascript:void(0)" class="iconfont to-search" id="startMobileSearch">&#xe651;</a>
+                </div>
+            </li>
+        </ul>
+        <a href="/quote.html{{chinese ? "" : "?language=en"}}" class="love mobile-love">{{chinese ? "我的询单" : "My Quote"}}</a>
+        <div class="toggle-language">
+            <span data-language="cn" class="select-language {{chinese ? "select" : ""}}">中</span>
+            <span>|</span>
+            <span data-language="en" class="select-language {{chinese ? "" : "select"}}">EN</span>
+        </div>
+    </div>
+    <div class="mobile-navbar-cover"></div>
+</div>
+<div class="love-container">
+    <div class="title">
+        <span class="love-top-back close-love">></span>
+        {{chinese ? "询单" : "Quote"}}
+        <span class="love-remove-all"><i class="iconfont">&#xe68c;</i>{{chinese ? "一键清除" : "Remove All"}}</span>
+    </div>
+    <ul class="list" id="nav-list"></ul>
+    <div class="ok"><a href="/quote.html{{chinese ? "" : "?language=en"}}">{{chinese ? "提交" : "Submit"}}</a></div>
+</div>
+<script id="nav-quote-product" type="text/html">
+        <%each list%>
+            <li class="item" product="<%$value._id.toString()%>">
+                <div class="img-container">
+                    <div class="img">
+                        <%if $value.media && $value.media.length > 0%>
+                            <img src="<%$value.media[0].link%>" alt="<%chinese ? $value.media[0].alt : $value.media[0].altEn%>">
+                        <%else%>
+                            <img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" alt="default image">
+                        <%/if%>
+                    </div>
+                </div>
+                <div class="number"><%$value.number%></div>
+                <div class="name-contaniner">
+                    <div class="name"><%chinese ? $value.name : $value.englishName%></div>
+                    <a href="javascript:void(0)" class="delete-product iconfont" data-id="<%$value._id.toString()%>" data-page="nav"> &#xe7db;</a>
+                    <div class="clear"></div>
+                </div>
+            </li>
+        <%/each%>
+</script>
+<script id="nav-quote-combo" type="text/html">
+        <%each list%>
+            <li class="item" combo="<%$value.combo%>">
+                <div class="img-container">
+                    <div class="img">
+                        <img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" alt="default image">
+                    </div>
+                </div>
+                <div class="number"><%$value.englishName%></div>
+                <div class="name-contaniner">
+                    <div class="name"><%$value.name%></div>
+                    <a href="javascript:void(0)" class="delete-combo iconfont" combo="<%$value.combo%>" data-page="nav"> &#xe7db;</a>
+                    <div class="clear"></div>
+                </div>
+            </li>
+        <%/each%>
+</script>

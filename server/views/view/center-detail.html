@@ -1,0 +1,81 @@
+{{include "../public/html-header"}}
+<link href="/css/center-detail.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+{{include "./nav"}}
+<div class="content-container">
+    <div class="head-container">
+        <div class="head">
+            {{if list && list.length > 0}}
+                <div class="head-title">
+                    {{each list}}
+                        {{if indexThis === $value.channel.index}}
+                            {{chinese ? $value.channel.title : $value.channel.titleEn }}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{/if}}
+            <div class="breadcrumbs">
+                <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+                <span>{{chinese ? "球馆" : "Center"}}</span><span>/</span>
+                {{if list && list.length > 0}}
+                    <span>
+                        {{each list}}
+                            {{if indexThis === $value.channel.index}}
+                                {{chinese ? $value.channel.title : $value.channel.titleEn }}
+                            {{/if}}
+                        {{/each}}
+                    </span>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        {{if list && list.length > 0}}
+        <div class="main">
+            <div class="tab">
+                {{each list}}
+                    <a href="/center-detail.html?id={{$value.channel.index}}{{chinese ? "" : "&language=en"}}" class="tab-item {{indexThis === $value.channel.index ? "item-select" : ""}}">{{chinese ? $value.channel.title : $value.channel.titleEn}}</a>
+                {{/each}}
+            </div>
+            {{if list[indexThis].ppt}}
+                    {{each list[indexThis].ppt}}
+                <div class="img-wrapper">
+                    {{if $value.link}}
+                        <img src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}" class="arena-img">
+                    {{else}}
+                        <img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E6%95%B4%E5%A5%97%E8%AE%BE%E5%A4%87%E9%A2%91%E9%81%93%E9%A1%B5.jpg" alt="default image" class="arena-img">
+                    {{/if}}
+                </div>
+                    {{/each}}
+            {{/if}}
+            {{if list[indexThis].rotation}}
+            <div class="case">
+                <h1 class="case-title">{{chinese ? "球馆图库" : "Case Gallery"}}</h1>
+                <div class="case-slider">
+                    <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                        {{each list[indexThis].rotation}}
+                            {{if $value.link}}
+                                <div class="swiper-slide"><img src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}"></div>
+                            {{else}}
+                                <div class="swiper-slide"><img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4banner.png" alt="default image"></div>
+                            {{/if}}
+                        {{/each}}
+                            </div>
+                    </div>
+                </div>
+                <a href="{{link}}" target="_blank" class="case-download">{{chinese ? "助你更好投资的球馆计划书" : "Check out and start your own plan"}}</a>
+            </div>
+            {{/if}}
+        </div>
+        {{else}}
+        <div class="main">
+                {{chinese ? "网页建设中，敬请期待" : "Page in construction, thank you for your patience"}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+{{include "./footer"}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="/js/center-detail.min.js"></script>
+{{include "../public/html-footer"}}

@@ -1,0 +1,23 @@
+[
+  {
+    "uid": "app",
+    "append": true,
+    "watch": true,
+    "script": "app.js",
+    "sourceDir": "D:/b/server"
+  },
+  {
+    "uid": "renderApp",
+    "append": true,
+    "watch": true,
+    "script": "renderApp.js",
+    "sourceDir": "D:/b/server"
+  },
+  {
+    "uid": "schedule",
+    "append": true,
+    "watch": true,
+    "script": "schedule.js",
+    "sourceDir": "D:/b/server"
+  }
+]

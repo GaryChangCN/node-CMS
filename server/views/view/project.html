@@ -1,0 +1,27 @@
+{{include "../public/html-header"}}
+<link href="/css/project.min.css" rel="stylesheet">
+{{include "nav"}}
+<div class="banner-container">
+    <div class="banner">
+        {{each projectBanner}}
+            <img src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}">
+        {{/each}}
+    </div>
+</div>
+<div class="project-container">
+    {{each projectList}}
+    <div class="project-item">
+        <div class="info">
+            <div class="title">{{chinese ? $value.title : $value.titleEn}}</div>
+            <div class="ctx">{{chinese ? $value.content : $value.contentEn}}</div>
+        </div>
+        {{if $value.icon}}
+            <div class="img-container"><img src="{{$value.icon.link}}" alt="{{chinese ? $value.alt : $value.altEn}}"></div>
+        {{else}}
+            <div class="img-container"><img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E6%95%B4%E5%A5%97%E8%AE%BE%E5%A4%87%E9%A2%91%E9%81%93%E9%A1%B5.jpg" alt="default image"></div>
+        {{/if}}
+    </div>
+    {{/each}}
+</div>
+{{include "./footer"}}
+{{include "../public/html-footer"}}

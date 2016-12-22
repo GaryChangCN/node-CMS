@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="theme-color" content="#1D8CE0">
+    <title>新士域保龄球后台管理</title>
+</head>
+
+<body>
+	<div id="tips" style="z-index: 900;position:fixed;top: 0px;width:100%;height:40px;line-height:40px;text-align: center;font-size:12px;background-color: #20A0FF; color:#fff;display: none">
+		<span>检测到你现在在使用老版本IE浏览器内核，如果出现页面显示不正常情况，请把浏览器切换到极速模式或使用 chrome 浏览器。<a target="_blank" href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=浏览器切换内核&rsv_pq=9460f75700019e47&rsv_t=684f95GfR8gCX%2BvQ1S5NzCZcA7UEmQK8glaQ9JkulzxAUob8gKWfWcpaz00&rqlang=cn&rsv_enter=1&rsv_sug3=3&rsv_sug1=2&rsv_sug7=100">如何切换</a></span>
+	</div>
+    <div id="app"></div>
+</body>
+<script>
+	if (!+[1, ]) {
+		document.getElementById("tips").style.display="block";
+	}
+	setTimeout(function() {
+		document.getElementById("tips").style.display="none";
+	}, 3000);
+</script>
+</html>

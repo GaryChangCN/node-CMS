@@ -1,0 +1,605 @@
+{{include "../public/html-header"}}
+<link href="/css/quote.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="content-container">
+    <div class="head-container">
+        <div class="head">
+            <div class="head-title">{{chinese ? "我的询单" : "My Quote"}}</div>
+            <div class="breadcrumbs">
+                <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+                <span>{{chinese ? "我的询单" : "My Quote"}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="main">
+            <div class="form-wrapper">
+                <p class="wrapper-title">{{chinese ? "联系信息" : "Contact Information"}}</p>
+                <form id="quote-form" action="" class="form">
+                    <div class="input-field">
+                        <input class="input" id="name" type="text" name="name">
+                        <label for="name">{{chinese ? "姓名" : "Name"}}</label>
+                    </div>
+                    <div class="input-field">
+                        <input class="input" id="email" type="text" name="email">
+                        <label for="email">{{chinese ? "邮箱" : "Email"}}</label>
+                    </div>
+                    <div class="input-select">
+                        <div class="select-wrapper">
+                            <span class="caret">▼</span>
+                            <input type="text"
+                                class="select-dropdown"
+                                name="country"
+                                id="country"
+                                placeholder="{{chinese ? "请填写或选择你的国家或地区" : "Please write down or choose your country or region from below"}}">
+                            <label class="active">{{chinese ? "国家或地区" : "Country / Region"}}</label>
+                            {{if chinese}}
+                                <ul class="dropdown-content select-dropdown">
+                                    <li>阿尔巴尼亚</li>
+                                    <li>阿尔及利亚</li>
+                                    <li>阿富汗</li>
+                                    <li>阿根廷</li>
+                                    <li>阿拉伯联合酋长国</li>
+                                    <li>阿鲁巴</li>
+                                    <li>阿曼</li>
+                                    <li>阿塞拜疆</li>
+                                    <li>埃及</li>
+                                    <li>埃塞俄比亚</li>
+                                    <li>爱尔兰</li>
+                                    <li>爱沙尼亚</li>
+                                    <li>安道尔</li>
+                                    <li>安哥拉</li>
+                                    <li>安圭拉岛</li>
+                                    <li>安提瓜和巴布达</li>
+                                    <li>奥地利</li>
+                                    <li>澳大利亚</li>
+                                    <li>巴巴多斯</li>
+                                    <li>巴布亚新几内亚</li>
+                                    <li>巴哈马</li>
+                                    <li>巴基斯坦</li>
+                                    <li>巴拉圭</li>
+                                    <li>巴勒斯坦领土</li>
+                                    <li>巴林</li>
+                                    <li>巴拿马</li>
+                                    <li>巴西</li>
+                                    <li>白俄罗斯</li>
+                                    <li>百慕大</li>
+                                    <li>保加利亚</li>
+                                    <li>北马里亚纳群岛</li>
+                                    <li>贝宁</li>
+                                    <li>比利时</li>
+                                    <li>冰岛</li>
+                                    <li>玻利维亚</li>
+                                    <li>波多黎各</li>
+                                    <li>波兰</li>
+                                    <li>波斯尼亚和黑塞哥维那</li>
+                                    <li>博茨瓦纳</li>
+                                    <li>伯利兹</li>
+                                    <li>不丹</li>
+                                    <li>布基纳法索</li>
+                                    <li>布隆迪</li>
+                                    <li>布维岛</li>
+                                    <li>赤道几内亚</li>
+                                    <li>丹麦</li>
+                                    <li>德国</li>
+                                    <li>东帝汶</li>
+                                    <li>多哥</li>
+                                    <li>多米尼加</li>
+                                    <li>多米尼加共和国</li>
+                                    <li>俄罗斯</li>
+                                    <li>厄瓜多尔</li>
+                                    <li>厄立特里亚</li>
+                                    <li>法国</li>
+                                    <li>法罗群岛</li>
+                                    <li>法属玻利尼西亚</li>
+                                    <li>法属圭亚那</li>
+                                    <li>法属南方领土</li>
+                                    <li>菲律宾</li>
+                                    <li>芬兰</li>
+                                    <li>佛得角</li>
+                                    <li>福克兰群岛</li>
+                                    <li>冈比亚</li>
+                                    <li>刚果共和国</li>
+                                    <li>刚果民主共和国</li>
+                                    <li>哥伦比亚</li>
+                                    <li>哥斯达黎加</li>
+                                    <li>格林纳达</li>
+                                    <li>格陵兰</li>
+                                    <li>格鲁吉亚</li>
+                                    <li>瓜德罗普岛</li>
+                                    <li>关岛</li>
+                                    <li>圭亚那</li>
+                                    <li>哈萨克斯坦</li>
+                                    <li>海地</li>
+                                    <li>韩国</li>
+                                    <li>荷兰</li>
+                                    <li>荷兰加勒比区</li>
+                                    <li>荷属安的列斯</li>
+                                    <li>荷属圣马丁</li>
+                                    <li>赫德和麦克唐纳群岛</li>
+                                    <li>洪都拉斯</li>
+                                    <li>基里巴斯</li>
+                                    <li>吉布提</li>
+                                    <li>吉尔吉兹斯坦</li>
+                                    <li>几内亚</li>
+                                    <li>几内亚比绍</li>
+                                    <li>加拿大</li>
+                                    <li>加纳</li>
+                                    <li>加蓬</li>
+                                    <li>柬埔寨</li>
+                                    <li>捷克共和国</li>
+                                    <li>津巴布韦</li>
+                                    <li>喀麦隆</li>
+                                    <li>卡塔尔</li>
+                                    <li>开曼群岛</li>
+                                    <li>科科斯（基林）群岛</li>
+                                    <li>科摩罗</li>
+                                    <li>科特迪瓦</li>
+                                    <li>科威特</li>
+                                    <li>克罗地亚</li>
+                                    <li>肯尼亚</li>
+                                    <li>库克群岛</li>
+                                    <li>库拉索岛</li>
+                                    <li>拉脱维亚</li>
+                                    <li>莱索托</li>
+                                    <li>老挝</li>
+                                    <li>黎巴嫩</li>
+                                    <li>利比里亚</li>
+                                    <li>立陶宛</li>
+                                    <li>列支敦士登</li>
+                                    <li>留尼旺岛</li>
+                                    <li>卢森堡</li>
+                                    <li>卢旺达</li>
+                                    <li>罗马尼亚</li>
+                                    <li>马达加斯加</li>
+                                    <li>马耳他</li>
+                                    <li>马尔代夫</li>
+                                    <li>马拉维</li>
+                                    <li>马来西亚</li>
+                                    <li>马里</li>
+                                    <li>马其顿</li>
+                                    <li>马绍尔群岛</li>
+                                    <li>马提尼克岛</li>
+                                    <li>马约特</li>
+                                    <li>毛里求斯</li>
+                                    <li>毛里塔尼亚</li>
+                                    <li>美国</li>
+                                    <li>美国本土外小领地</li>
+                                    <li>美属萨摩亚</li>
+                                    <li>美属维尔京群岛</li>
+                                    <li>蒙古</li>
+                                    <li>蒙特塞拉特岛</li>
+                                    <li>孟加拉国</li>
+                                    <li>秘鲁</li>
+                                    <li>密克罗尼西亚</li>
+                                    <li>缅甸</li>
+                                    <li>摩尔多瓦</li>
+                                    <li>摩洛哥</li>
+                                    <li>摩纳哥</li>
+                                    <li>莫桑比克</li>
+                                    <li>墨西哥</li>
+                                    <li>纳米比亚</li>
+                                    <li>南非</li>
+                                    <li>南极洲</li>
+                                    <li>南乔治亚岛和南桑威奇群岛</li>
+                                    <li>尼泊尔</li>
+                                    <li>尼加拉瓜</li>
+                                    <li>尼日尔</li>
+                                    <li>尼日利亚</li>
+                                    <li>纽埃</li>
+                                    <li>挪威</li>
+                                    <li>诺福克岛</li>
+                                    <li>帕劳</li>
+                                    <li>皮特克恩</li>
+                                    <li>葡萄牙</li>
+                                    <li>日本</li>
+                                    <li>瑞典</li>
+                                    <li>瑞士</li>
+                                    <li>萨尔瓦多</li>
+                                    <li>塞尔维亚</li>
+                                    <li>塞拉利昂</li>
+                                    <li>塞内加尔</li>
+                                    <li>塞浦路斯</li>
+                                    <li>塞舌尔</li>
+                                    <li>沙特阿拉伯</li>
+                                    <li>圣诞岛</li>
+                                    <li>圣多美和普林西比</li>
+                                    <li>圣赫勒拿</li>
+                                    <li>圣基茨和尼维斯</li>
+                                    <li>圣卢西亚</li>
+                                    <li>圣马力诺</li>
+                                    <li>圣皮埃尔和密克隆</li>
+                                    <li>圣文森特和格林纳丁斯</li>
+                                    <li>斯里兰卡</li>
+                                    <li>斯洛伐克</li>
+                                    <li>斯洛文尼亚</li>
+                                    <li>斯瓦尔巴岛和扬马延岛</li>
+                                    <li>斯威士兰</li>
+                                    <li>苏里南</li>
+                                    <li>索马里</li>
+                                    <li>所罗门群岛</li>
+                                    <li>塔吉克斯坦</li>
+                                    <li>台湾</li>
+                                    <li>泰国</li>
+                                    <li>坦桑尼亚</li>
+                                    <li>汤加</li>
+                                    <li>特克斯和凯科斯群岛</li>
+                                    <li>特立尼达和多巴哥</li>
+                                    <li>突尼斯</li>
+                                    <li>图瓦卢</li>
+                                    <li>土耳其</li>
+                                    <li>土库曼斯坦</li>
+                                    <li>托克劳群岛</li>
+                                    <li>瓦利斯群岛和富图纳群岛</li>
+                                    <li>瓦努阿图</li>
+                                    <li>危地马拉</li>
+                                    <li>维尔京群岛（英属）</li>
+                                    <li>委内瑞拉</li>
+                                    <li>文莱</li>
+                                    <li>乌干达</li>
+                                    <li>乌克兰</li>
+                                    <li>乌拉圭</li>
+                                    <li>乌兹别克斯坦</li>
+                                    <li>西班牙</li>
+                                    <li>西撒哈拉</li>
+                                    <li>希腊</li>
+                                    <li>新加坡</li>
+                                    <li>新喀里多尼亚</li>
+                                    <li>新西兰</li>
+                                    <li>匈牙利</li>
+                                    <li>牙买加</li>
+                                    <li>亚美尼亚</li>
+                                    <li>也门</li>
+                                    <li>伊拉克</li>
+                                    <li>以色列</li>
+                                    <li>意大利</li>
+                                    <li>印度</li>
+                                    <li>印度尼西亚</li>
+                                    <li>英国</li>
+                                    <li>英属印度洋领地</li>
+                                    <li>约旦</li>
+                                    <li>越南</li>
+                                    <li>赞比亚</li>
+                                    <li>乍得</li>
+                                    <li>直布罗陀</li>
+                                    <li>智利</li>
+                                    <li>中非共和国</li>
+                                    <li>中国</li>
+                                    <li>中国澳门特别行政区</li>
+                                    <li>中国香港特别行政区</li>
+                                    <li>瑙鲁</li>
+                                    <li>梵蒂冈</li>
+                                    <li>斐济</li>
+                                </ul>
+                            {{else}}
+                                <ul class="dropdown-content select-dropdown">
+                                    <li>Afghanistan</li>
+                                    <li>Albania</li>
+                                    <li>Algeria</li>
+                                    <li>American Samoa</li>
+                                    <li>Andorra</li>
+                                    <li>Angola</li>
+                                    <li>Anguilla</li>
+                                    <li>Antarctica</li>
+                                    <li>Antigua And Barbuda</li>
+                                    <li>Argentina</li>
+                                    <li>Armenia</li>
+                                    <li>Aruba</li>
+                                    <li>Australia</li>
+                                    <li>Austria</li>
+                                    <li>Azerbaijan</li>
+                                    <li>Bahamas</li>
+                                    <li>Bahrain</li>
+                                    <li>Bangladesh</li>
+                                    <li>Barbados</li>
+                                    <li>Belarus</li>
+                                    <li>Belgium</li>
+                                    <li>Belize</li>
+                                    <li>Benin</li>
+                                    <li>Bermuda</li>
+                                    <li>Bhutan</li>
+                                    <li>Bolivia</li>
+                                    <li>Bosnia and Herzegovina</li>
+                                    <li>Botswana</li>
+                                    <li>Bouvet Island</li>
+                                    <li>Brazil</li>
+                                    <li>British Indian Ocean Territory</li>
+                                    <li>British Virgin Islands</li>
+                                    <li>Brunei Darussalam</li>
+                                    <li>Bulgaria</li>
+                                    <li>Burkina Faso</li>
+                                    <li>Burundi</li>
+                                    <li>Cambodia</li>
+                                    <li>Cameroon</li>
+                                    <li>Canada</li>
+                                    <li>Cape Verde</li>
+                                    <li>Caribbean Netherlands</li>
+                                    <li>Cayman Islands</li>
+                                    <li>Central African Republic</li>
+                                    <li>Chad</li>
+                                    <li>Chile</li>
+                                    <li>China</li>
+                                    <li>Christmas Island</li>
+                                    <li>Cocos (Keeling) Islands</li>
+                                    <li>Colombia</li>
+                                    <li>Comoros</li>
+                                    <li>Cook Islands</li>
+                                    <li>Costa Rica</li>
+                                    <li>Côte d'Ivoire</li>
+                                    <li>Croatia</li>
+                                    <li>Curaçao</li>
+                                    <li>Cyprus</li>
+                                    <li>Czech Republic</li>
+                                    <li>Democratic Republic of the Congo</li>
+                                    <li>Denmark</li>
+                                    <li>Djibouti</li>
+                                    <li>Dominica</li>
+                                    <li>Dominican Republic</li>
+                                    <li>Ecuador</li>
+                                    <li>Egypt</li>
+                                    <li>El Salvador</li>
+                                    <li>Equatorial Guinea</li>
+                                    <li>Eritrea</li>
+                                    <li>Estonia</li>
+                                    <li>Ethiopia</li>
+                                    <li>Falkland Islands</li>
+                                    <li>Faroe Islands</li>
+                                    <li>Fiji</li>
+                                    <li>Finland</li>
+                                    <li>France</li>
+                                    <li>French Guiana</li>
+                                    <li>French Polynesia</li>
+                                    <li>French Southern Territories</li>
+                                    <li>Gabon</li>
+                                    <li>Gambia</li>
+                                    <li>Georgia</li>
+                                    <li>Germany</li>
+                                    <li>Ghana</li>
+                                    <li>Gibraltar</li>
+                                    <li>Greece</li>
+                                    <li>Greenland</li>
+                                    <li>Grenada</li>
+                                    <li>Guadeloupe</li>
+                                    <li>Guam</li>
+                                    <li>Guatemala</li>
+                                    <li>Guinea</li>
+                                    <li>Guinea-Bissau</li>
+                                    <li>Guyana</li>
+                                    <li>Haiti</li>
+                                    <li>Heard And Mc Donald Islands</li>
+                                    <li>Honduras</li>
+                                    <li>Hong Kong</li>
+                                    <li>Hungary</li>
+                                    <li>Iceland</li>
+                                    <li>India</li>
+                                    <li>Indonesia</li>
+                                    <li>Iraq</li>
+                                    <li>Ireland</li>
+                                    <li>Israel</li>
+                                    <li>Italy</li>
+                                    <li>Jamaica</li>
+                                    <li>Japan</li>
+                                    <li>Jordan</li>
+                                    <li>Kazakhstan</li>
+                                    <li>Kenya</li>
+                                    <li>Kiribati</li>
+                                    <li>Kuwait</li>
+                                    <li>Kyrgyzstan</li>
+                                    <li>Laos</li>
+                                    <li>Latvia</li>
+                                    <li>Lebanon</li>
+                                    <li>Lesotho</li>
+                                    <li>Liberia</li>
+                                    <li>Liechtenstein</li>
+                                    <li>Lithuania</li>
+                                    <li>Luxembourg</li>
+                                    <li>Macau</li>
+                                    <li>Macedonia</li>
+                                    <li>Madagascar</li>
+                                    <li>Malawi</li>
+                                    <li>Malaysia</li>
+                                    <li>Maldives</li>
+                                    <li>Mali</li>
+                                    <li>Malta</li>
+                                    <li>Marshall Islands</li>
+                                    <li>Martinique</li>
+                                    <li>Mauritania</li>
+                                    <li>Mauritius</li>
+                                    <li>Mayotte</li>
+                                    <li>Mexico</li>
+                                    <li>Micronesia</li>
+                                    <li>Moldova</li>
+                                    <li>Monaco</li>
+                                    <li>Mongolia</li>
+                                    <li>Montserrat</li>
+                                    <li>Morocco</li>
+                                    <li>Mozambique</li>
+                                    <li>Myanmar</li>
+                                    <li>Namibia</li>
+                                    <li>Nauru</li>
+                                    <li>Nepal</li>
+                                    <li>Netherlands</li>
+                                    <li>Netherlands Antilles</li>
+                                    <li>New Caledonia</li>
+                                    <li>New Zealand</li>
+                                    <li>Nicaragua</li>
+                                    <li>Niger</li>
+                                    <li>Nigeria</li>
+                                    <li>Niue</li>
+                                    <li>Norfolk Island</li>
+                                    <li>Northern Mariana Islands</li>
+                                    <li>Norway</li>
+                                    <li>Oman</li>
+                                    <li>Pakistan</li>
+                                    <li>Palau</li>
+                                    <li>Palestinian Territories</li>
+                                    <li>Panama</li>
+                                    <li>Papua New Guinea</li>
+                                    <li>Paraguay</li>
+                                    <li>Peru</li>
+                                    <li>Philippines</li>
+                                    <li>Pitcairn</li>
+                                    <li>Poland</li>
+                                    <li>Portugal</li>
+                                    <li>Puerto Rico</li>
+                                    <li>Qatar</li>
+                                    <li>Republic of the Congo</li>
+                                    <li>Réunion</li>
+                                    <li>Romania</li>
+                                    <li>Russia</li>
+                                    <li>Rwanda</li>
+                                    <li>Saint Helena</li>
+                                    <li>Saint Kitts And Nevis</li>
+                                    <li>Saint Lucia</li>
+                                    <li>Saint Vincent and the Grenadines</li>
+                                    <li>San Marino</li>
+                                    <li>Sao Tome And Principe</li>
+                                    <li>Saudi Arabia</li>
+                                    <li>Senegal</li>
+                                    <li>Serbia</li>
+                                    <li>Seychelles</li>
+                                    <li>Sierra Leone</li>
+                                    <li>Singapore</li>
+                                    <li>Sint Maarten</li>
+                                    <li>Slovakia</li>
+                                    <li>Slovenia</li>
+                                    <li>Solomon Islands</li>
+                                    <li>Somalia</li>
+                                    <li>South Africa</li>
+                                    <li>South Georgia and South Sandwich Islands</li>
+                                    <li>South Korea</li>
+                                    <li>Spain</li>
+                                    <li>Sri Lanka</li>
+                                    <li>St. Pierre And Miquelon</li>
+                                    <li>Suriname</li>
+                                    <li>Svalbard And Jan Mayen Islands</li>
+                                    <li>Swaziland</li>
+                                    <li>Sweden</li>
+                                    <li>Switzerland</li>
+                                    <li>Taiwan</li>
+                                    <li>Tajikistan</li>
+                                    <li>Tanzania</li>
+                                    <li>Thailand</li>
+                                    <li>Timor-Leste</li>
+                                    <li>Togo</li>
+                                    <li>Tokelau</li>
+                                    <li>Tonga</li>
+                                    <li>Trinidad and Tobago</li>
+                                    <li>Tunisia</li>
+                                    <li>Turkey</li>
+                                    <li>Turkmenistan</li>
+                                    <li>Turks and Caicos Islands</li>
+                                    <li>Tuvalu</li>
+                                    <li>Uganda</li>
+                                    <li>Ukraine</li>
+                                    <li>United Arab Emirates</li>
+                                    <li>United Kingdom</li>
+                                    <li>United States</li>
+                                    <li>United States Minor Outlying</li>
+                                    <li>Uruguay</li>
+                                    <li>Uzbekistan</li>
+                                    <li>Vanuatu</li>
+                                    <li>Vatican</li>
+                                    <li>Venezuela</li>
+                                    <li>Vietnam</li>
+                                    <li>Virgin Islands (U.S.)</li>
+                                    <li>Wallis And Futuna Islands</li>
+                                    <li>Western Sahara</li>
+                                    <li>Yemen</li>
+                                    <li>Zambia</li>
+                                    <li>Zimbabwe</li>
+                                </ul>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="input-select">
+                        <div class="select-wrapper">
+                            <span class="caret">▼</span>
+                            <input type="text"
+                                class="select-dropdown select-dropdown-readonly"
+                                name="currency"
+                                id="currency"
+                                readonly placeholder="{{chinese ? "请选择你希望的报价币种" : "Please choose the currency of your quotation"}}">
+                            <label class="active">{{chinese ? "报价币种" : "Quotation Currency"}}</label>
+                            <ul class="dropdown-content select-dropdown">
+                                <li class="">CNY 人民币</li>
+                                <li class="">USD 美元</li>
+                                <li class="">HKD 港币</li>
+                                <li class="">MYR 马来西亚令吉</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <input class="input" id="phone" type="text">
+                        <label for="phone">{{chinese ? "电话" : "Phone"}}</label>
+                    </div>
+                    <div class="input-field">
+                        <input class="input" id="other" type="text">
+                        <label for="other">{{chinese ? "其他联系方式" : "Other contact"}}</label>
+                    </div>
+                    <div class="input-field">
+                        <textarea class="input" id="remarks" name=""></textarea>
+                        <label for="remarks">{{chinese ? "备注" : "Note"}}</label>
+                    </div>
+                </form>
+            </div>
+            <div class="product-wrapper">
+                <p class="wrapper-title">{{chinese ? "产品询价" : "Product Quotation"}}</p>
+                <div id="quote-list"></div>
+                <div class="ok"><button class="submit-quote">{{chinese ? "提交" : "Submit"}}</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模板 -->
+<script id="quote-product" type="text/html">
+    <%each list%>
+        <div class="product-item product" product="<%$value._id.toString()%>">
+            <div class="img-wrapper">
+                <%if $value.media && $value.media.length > 0%>
+                    <img src="<%$value.media[0].link%>" class="product-img">
+                <%else%>
+                    <img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" class="product-img">
+                <%/if%>
+            </div>
+            <div class="div">
+                <div class="product-number"><%$value.number%></div>
+                <div class="product-name"><%chinese ? $value.name : $value.englishName%></div>
+                <div class="div1">
+                    <div class="product-count">
+                        <span>{{chinese ? "数量：" : "Quantity:"}}</span>
+                        <input type="number" min="0" value="1">
+                    </div>
+                    <div class="product-del delete-product" data-id="<%$value._id.toString()%>" data-page="quote">
+                        <i class="iconfont"> &#xe7db;</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%/each%>
+</script>
+<script id="quote-combo" type="text/html">
+    <%each list%>
+        <div class="product-item combo" combo="<%$value.combo%>">
+            <div class="img-wrapper">
+                <img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" class="product-img">
+            </div>
+            <div class="div">
+                <div class="product-number"><%$value.englishName%></div>
+                <div class="product-name"><%$value.name%></div>
+                <div class="div1">
+                    <div class="product-count">
+                        <span>{{chinese ? "数量：" : "Quantity:"}}</span>
+                        <input type="number" min="0" value="1">
+                    </div>
+                    <div class="product-del delete-combo" combo="<%$value.combo%>" data-page="quote">
+                        <i class="iconfont">&#xe7db;</i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%/each%>
+</script>
+{{include "./footer"}}
+<script type="text/javascript" src="/js/quote.min.js"></script>
+{{include "../public/html-footer"}}

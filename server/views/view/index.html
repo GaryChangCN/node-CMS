@@ -1,0 +1,94 @@
+{{include "../public/html-header"}}
+<link href="/css/index.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/css/swiper.min.css">
+{{include "./nav"}}
+<div class="index-content">
+    <div class="swiper-container-pc index-swiper-container">
+        <div class="swiper-wrapper">
+            {{each rotation}}
+                <div class="swiper-slide swiper-pc">
+                    <img class="img-pc" src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}">
+                </div>
+            {{/each}}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="swiper-container-moblie index-swiper-container">
+        <div class="swiper-wrapper">
+            {{each rotationMobile}}
+                <div class="swiper-slide swiper-moblie">
+                    <img class="img-moblie" src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}">
+                </div>
+            {{/each}}
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="index-intro-group">
+        <div class="index-intro">
+            <div class="index-intro-title">{{chinese ? "只为你的高投资回报" : "Investors' Choice"}}</div>
+            <div class="index-card">
+                {{each investors}}
+                    <a href="{{$value.target}}" target="_blank">
+                        <div class="index-card-item">
+                            {{if $value.icon && $value.icon.link}}
+                                <img class="index-intro-icon" src="{{$value.icon.link}}" alt="{{chinese ? $value.icon.alt : $value.icon.altEn}}">
+                            {{else}}
+                                <img class="index-intro-icon" src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87.png" alt="default imgage">
+                            {{/if}}
+                            <h4 class="index-card-itemtitle">{{chinese ? $value.title : $value.titleEn}}</h4>
+                            <div class="index-card-itemtext">{{chinese ? $value.content : $value.contentEn}}</div>
+                        </div>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="index-intro">
+            <div class="index-intro-title">{{chinese ? "只为机器的最优性能" : "Centers' Choice"}}</div>
+            <div class="index-card">
+                {{each centers}}
+                    <a href="{{$value.target}}" target="_blank">
+                        <div class="index-card-item">
+                            {{if $value.icon && $value.icon.link}}
+                                <img class="index-intro-icon" src="{{$value.icon.link}}" alt="{{chinese ? $value.icon.alt : $value.icon.altEn}}">
+                            {{else}}
+                                <img class="index-intro-icon" src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87.png" alt="default imgage">
+                            {{/if}}
+                            <h4 class="index-card-itemtitle">{{chinese ? $value.title : $value.titleEn}}</h4>
+                            <div class="index-card-itemtext">{{chinese ? $value.content : $value.contentEn}}</div>
+                        </div>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+        <div class="index-intro">
+            <div class="index-intro-title">{{chinese ? "只为你的更出色表现" : "Bowlers' Choice"}}</div>
+            <div class="index-card">
+                {{each bowlers}}
+                    <a href="{{$value.target}}" target="_blank">
+                        <div class="index-card-item">
+                            {{if $value.icon && $value.icon.link}}
+                                <img class="index-intro-icon" src="{{$value.icon.link}}" alt="{{chinese ? $value.icon.alt : $value.icon.altEn}}">
+                            {{else}}
+                                <img class="index-intro-icon" src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E5%9B%BE%E6%A0%87.png" alt="default imgage">
+                            {{/if}}
+                            <h4 class="index-card-itemtitle">{{chinese ? $value.title : $value.titleEn}}</h4>
+                            <div class="index-card-itemtext">{{chinese ? $value.content : $value.contentEn}}</div>
+                        </div>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="index-map">
+        <div class="index-map-title">{{chinese ? "展望全球的业务网络" : "OUR GLOBAL BUSINESS: BOWLING EVERYWHERE"}}</div>
+        <img src="//ohnpdrepj.bkt.clouddn.com/map.png" alt="map image">
+    </div>
+</div>
+{{include "./footer"}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="/js/index.min.js"></script>
+{{include "../public/html-footer"}}

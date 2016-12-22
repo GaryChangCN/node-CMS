@@ -1,0 +1,119 @@
+{{include "../public/html-header"}}
+<link href="/css/equipment-detail.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="content-container">
+    <div class="head-container">
+        <div class="head">
+            <div class="head-title">{{chinese ? info.name : info.englishName}}</div>
+            <div class="breadcrumbs">
+                <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+                <span>{{chinese ? "产品" : "Product"}}</span><span>/</span>
+                <span>{{chinese ? "设备与系统" : "Equipment &amp; Systems"}}</span><span>/</span>
+                <span>{{chinese ? "整套设备" : "Pinsetter Set"}}</span><span>/</span>
+                <span>{{chinese ? info.name : info.englishName}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="main">
+            {{if data}}
+            <div class="index-intro-group">
+                <div class="index-intro">
+                    {{if data.colTitle}}
+                        <div class="index-intro-title">{{chinese ? data.colTitle.name : data.colTitle.englishName}}</div>
+                    {{else}}
+                        <div class="index-intro-title">{{chinese ? "默认标题" : "default"}}</div>
+                    {{/if}}
+                    <div class="index-card">
+                        {{if data.col}}
+                            {{each data.col}}
+                                <div class="index-card-item">
+                                    <img class="index-intro-icon" src="{{$value.link}}" alt="{{chiese ? $value.alt : $value.altEn}}">
+                                    <h4 class="index-card-itemtitle">{{chinese ? $value.title : $value.titleEn}}</h4>
+                                    <div class="index-card-itemtext">{{chinese ? $value.content : $value.contentEn}}</div>
+                                </div>
+                            {{/each}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{if data.ppt}}
+                {{each data.ppt}}
+                <div class="project-item">
+                    <div class="info">
+                        <div class="title">{{chinese ? $value.title : $value.titleEn}}</div>
+                        <div class="ctx">{{chinese ? $value.content : $value.contentEn}}</div>
+                    </div>
+                    {{if $value.link}}
+                        <div class="img-container"><img src="{{$value.link}}" alt="{{chinese ? $value.alt : $value.altEn}}"></div>
+                    {{else}}
+                        <div class="img-container"><img src="http://ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E6%95%B4%E5%A5%97%E8%AE%BE%E5%A4%87%E9%A2%91%E9%81%93%E9%A1%B5.jpg" alt="default"></div>
+                    {{/if}}
+                </div>
+                {{/each}}
+            {{/if}}
+            <div class="choose">
+                <h1 class="choose-title">{{chinese ? "推荐设备组合" : "BEST RECOMMENDED SET"}}</h1>
+                <ul class="card-area">
+                    <li class="card-item active">
+                        <div class="card-title">{{chinese ? "性价比之选" : "BEST PRICE" }}</div>
+                        <div class="card-content">
+                            <ul>
+                                {{if data.suggest1}}
+                                    {{each data.suggest1}}
+                                    <li>
+                                        <p class="item-title" data-id="{{$value._id.toString()}}">{{chinese ? $value.name : $value.englishName}}</p>
+                                    </li>
+                                    {{/each}}
+                                {{else}}
+                                    <li>{{chinese ? "网页建设中，敬请期待" : "Page in construction, thank you for your patience"}}</li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <div class="card-footer"><a href="javascript:void(0)" combo="{{info.englishName + "suggest1"}}" data-name="性价比之选" data-english="Best Price Set" class="choose-combo">{{chinese ? "加入询单" :"Get a quote"}}</a></div>
+                    </li>
+                    <li class="card-item">
+                        <div class="card-title">{{chinese ? "高性能之选" : "BEST PERFORMANCE"}}</div>
+                        <div class="card-content">
+                            <ul>
+                                {{if data.suggest2}}
+                                    {{each data.suggest2}}
+                                        <li>
+                                            <p class="item-title" data-id="{{$value._id.toString()}}">{{chinese ? $value.name : $value.englishName}}</p>
+                                        </li>
+                                    {{/each}}
+                                {{else}}
+                                    <li>{{chinese ? "网页建设中，敬请期待" : "Page in construction, thank you for your patience"}}</li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <div class="card-footer"><a href="javascript:void(0)" combo="{{info.englishName + "suggest2"}}" data-name="高性能之选" data-english="Best Performance Set" class="choose-combo">{{chinese ? "加入询单" :"Get a quote"}}</a></div>
+                    </li>
+                    <li class="card-item">
+                        <div class="card-title">{{chinese ? "附赠产品" : "PRODUCTS ENCLOSED"}}</div>
+                        <div class="card-content">
+                            <ul>
+                                {{if data.suggest3}}
+                                    {{each data.suggest3}}
+                                        <li>
+                                            <p class="item-title" data-id="{{$value._id.toString()}}">{{chinese ? $value.name : $value.englishName}}</p>
+                                        </li>
+                                    {{/each}}
+                                {{else}}
+                                    <li>{{chinese ? "网页建设中" : "Page in construction, thank you for your patience"}}</li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <div class="card-footer"><a href="javascript:void(0)" combo="{{info.englishName + "suggest3"}}" data-name="附赠产品" data-english="Set Enclosed Products" class="choose-combo">{{chinese ? "加入询单" :"Get a quote"}}</a></div>
+                    </li>
+                </ul>
+            </div>
+            {{else}}
+            <div class="index-intro-group">{{chinese ? "网页建设中，敬请期待" : "Page in construction, thank you for your patience"}}</div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{include "./footer"}}
+<script type="text/javascript" src="/js/equipment-detail.min.js"></script>
+{{include "../public/html-footer"}}

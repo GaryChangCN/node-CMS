@@ -1,0 +1,59 @@
+{{include "../public/html-header"}}
+<style>
+    * {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        list-style-type: none;
+        text-decoration: none;
+    }
+
+    body {
+        font-family: "PingFang Sc", "MicroSoft YaHei";
+        height: 100%; width: 100%;
+    }
+    .error-content .error-image-wrapper {
+        width: 100%;
+        max-height: 690px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+@media screen and (min-width: 426px) {
+    .error-content .error-image-wrapper img { height: 660px; }
+    .error-content .error-tips {
+        text-align: center;
+        color: #6286AE;
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .error-content .error-image-wrapper img {
+        padding-top: 20%;
+        width: 100%;
+    }
+    .error-content .error-tips {
+        text-align: center;
+        color: #6286AE;
+        font-size: 16px;
+        padding: 0 20px;
+    }
+}
+
+</style>
+    <div class="error-content">
+        <div class="error-image-wrapper"><img src="http://ohnpdrepj.bkt.clouddn.com/404.png" alt="404 image" class="error-image"></div>
+        <div class="error-tips">
+            {{if chinese}}
+                <p>网页出错啦，先回主页吧~</p>
+            {{else}}
+                <p>Oops, you are lost!<br> No worries, we will bring you home now :)</p>
+            {{/if}}
+        </div>
+    </div>
+    <script>
+        var url  = ~window.location.href.indexOf('language=en') ? window.location.origin + '?language=en' : window.location.origin;
+        document.addEventListener("DOMContentLoaded", function(){ setTimeout(function() { window.location =  url; }, 5000); });
+    </script>
+{{include "../public/html-footer"}}

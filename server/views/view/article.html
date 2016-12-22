@@ -1,0 +1,32 @@
+{{include "../public/html-header"}}
+<link href="/css/article.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="head-container">
+    <div class="head">
+        <div class="head-title">{{chinese ? "技术智库" : "Technical Library"}}</div>
+        <div class="breadcrumbs">
+            <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+            <span>{{chinese ? "支持" : "Support"}}</span><span>/</span>
+            <span>{{chinese ? "技术智库" : "Technical Library"}}</span>
+        </div>
+    </div>
+</div>
+<div class="main-container clear">
+    <div class="menu">
+    {{each kind}}
+        <a href="/library.html{{chinese ? "" : "?language=en"}}" data-name="{{$value.name}}" class="{{$index === 0 ? "menu-item active" : "menu-item"}}"><span>{{chinese ? $value.name : $value.englishName}}</span></a>
+    {{/each kind}}
+    </div>
+    <div class="main">
+        <div class="article-header">
+            <h1 class="article-title">{{title}}</h1>
+            <p class="article-section">{{time.toLocaleDateString()}}</p>
+        </div>
+        <div class="article-content">
+            {{#content}}
+        </div>
+    </div>
+    <a href="{{link}}" class="article-download" target="_blank">{{chinese ? "下载这篇文章" : "Download this article"}}</a>
+</div>
+{{include "./footer"}}
+{{include "../public/html-footer"}}

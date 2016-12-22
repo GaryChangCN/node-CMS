@@ -1,0 +1,79 @@
+{{include "../public/html-header"}}
+<link href="/css/equip-product.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//ohnpdrepj.bkt.clouddn.com/blueimp-gallery-change.min.css">
+{{include "./nav"}}
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+</div>
+
+<div class="content-container">
+    <div class="head-container">
+        <div class="head">
+            <div class="head-title">{{chinese ? extra.name : extra.englishName}}</div>
+            <div class="breadcrumbs">
+                <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+                <span>{{chinese ? "产品" : "Product"}}</span><span>/</span>
+                <span>{{chinese ? "设备与系统" : "Equipment & Systems"}}</span><span>/</span>
+                <span>{{chinese ? extra.name : extra.englishName}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <div class="main">
+            <div class="card">
+                {{if extra.children}}
+                    {{each extra.children}}
+                        <div  class="card-item">
+                            <span class="img-container">
+                                {{if $value.media && $value.media.length > 0}}
+                                    <img src="{{$value.media[0].link}}" alt="{{chinese ? $value.media[0].alt : $value.media[0].altEn}}">
+                                {{else}}
+                                    <img src="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png" alt="default product image">
+                                {{/if}}
+                            </span>
+                            <div class="info-container">
+                                <div class="number">{{$value.number ? $value.number : "暂无编号"}}</div>
+                                <div class="more iconfont">&#xe793;</div>
+                                <div class="name">{{chinese ? $value.name : $value.englishName}}</div>
+                                <div class="star iconfont" id="star-off" data-id="{{$value._id.toString()}}">&#xe754;</div>
+                                <div class="star star-hide iconfont" id="star-on" data-id="{{$value._id.toString()}}">&#xe6bc;</div>
+                                {{if $value.media && $value.media.length > 0}}
+                                    <div class="img-more">{{chinese ? "点击查看大图" : "Click to view more"}}
+                                        {{each $value.media}}
+                                            <a href="{{$value.link}}"></a>
+                                        {{/each}}
+                                    </div>
+                                {{else}}
+                                    <div class="img-more">{{chinese ? "点击查看大图" : "Click to view more"}}
+                                        <a href="//ohnpdrepj.bkt.clouddn.com/%E9%BB%98%E8%AE%A4%E4%BA%A7%E5%93%81.png"></a>
+                                    </div>
+                                {{/if}}
+                            </div>
+                            <div class="card-cover card-cover-hide">
+                                <div class="card-cover-title">
+                                    {{chinese ? $value.name : $value.englishName}}
+                                    <span class="iconfont close-card-cover">&#xe6cc;</span>
+                                </div>
+                                <div class="des">
+                                    {{chinese ? $value.description : $value.englishDescription}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    <div>{{chinese ? "网页建设中，敬请期待" : "Page in construction, thank you for your patience"}}</div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>
+{{include "./footer"}}
+<script src="//ohnpdrepj.bkt.clouddn.com/blueimp-gallery.min.js"></script>
+<script type="text/javascript" src="/js/equip-product.min.js"></script>
+{{include "../public/html-footer"}}

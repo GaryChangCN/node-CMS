@@ -1,0 +1,52 @@
+{{include "../public/html-header"}}
+<link href="/css/library.min.css" rel="stylesheet">
+{{include "./nav"}}
+<div class="head-container">
+    <div class="head">
+        <div class="head-title">{{chinese ? "技术智库" : "Technical Library"}}</div>
+        <div class="breadcrumbs">
+            <span>{{chinese ? "首页" : "Home Page"}}</span><span>/</span>
+            <span>{{chinese ? "支持" : "Support"}}</span><span>/</span>
+            <span>{{chinese ? "技术智库" : "Technical Library"}}</span>
+        </div>
+    </div>
+</div>
+<div class="main-container clear">
+    <div class="menu">
+    {{each kind}}
+        <a href="javascript:void(0)" data-name="{{$value.name}}" class="{{$index === 0 ? "menu-item active" : "menu-item"}}"><span>{{chinese ? $value.name : $value.englishName}}</span></a>
+    {{/each kind}}
+    </div>
+    {{each kind}}
+    <div class="{{$index === 0 ? "main active" : "main"}}" data-parent={{$value.name}}>
+        {{if $value.children.length > 0}}
+            {{each $value.children}}
+                <a href="/article.html?{{chinese ? "" : "language=en"}}&_id={{$value._id.toString()}}" class="list-item"><span>{{$value.title}} &gt;</span></a>
+            {{/each}}
+        {{else}}
+                <a href="javascript:void(0)" class="list-item"><span>{{chinese ? "暂无文章" : "We are working on it..."}}</span></a>
+        {{/if}}
+    </div>
+    {{/each}}
+</div>
+<div class="mobile-main-container">
+    <ul class="collapsible">
+        {{each kind}}
+        <li class="{{$index === 0 ? "active" : ""}}">
+            <div class="collapsible-header">{{chinese ? $value.name : $value.englishName}}</div>
+            <div class="collapsible-body">
+                {{if $value.children.length > 0}}
+                    {{each $value.children}}
+                        <a href="/article.html?{{chinese ? "" : "language=en"}}&_id={{$value._id.toString()}}" class="">{{$value.title}} &gt;</a>
+                    {{/each}}
+                {{else}}
+                    <a href="javascript:void(0)" class="">{{chinese ? "暂无文章" : "We are working on it..."}}</a>
+                {{/if}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+{{include "./footer"}}
+<script type="text/javascript" src="/js/library.min.js"></script>
+{{include "../public/html-footer"}}

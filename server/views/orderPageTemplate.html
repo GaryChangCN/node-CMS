@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="orderPage">
+        <div class="head">
+            {{head[0]}}</br>
+            {{head[1]}}</br>
+            {{head[2]}}
+        </div>
+        <div class="top">
+            <div class="title">
+                {{title}}
+            </div>
+            <div class="extra">
+                <div class="number">
+                    <span class="f">
+                    {{number}}
+                </span>
+                    <span class="s">
+                    {{numberValue}}
+                </span>
+                </div>
+                <div class="saleManager">
+                    <span class="f">
+                    {{saleManager}}
+                </span>
+                    <span class="s">
+                    {{saleManagerValue}}
+                </span>
+                </div>
+                <div class="time">
+                    <span class="f">{{date}}</span>
+                    <span class="s">{{dateValue}}</span>
+                </div>
+                <div class="money">
+                    <span class="f">
+                    {{money}}
+                </span>
+                    <span class="s">
+                    {{moneyValue}}
+                </span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="info">
+                <div class="customerCompany">
+                    <span class="f">
+                      {{company}}
+                </span>
+                    <span class="s">
+                      {{companyValue}}
+                </span>
+                </div>
+                <div class="customerName">
+                    <span class="f">
+                      {{customer}}
+                </span>
+                    <span class="s">
+                      {{customerValue}}
+                </span>
+                </div>
+                <div class="customerContact">
+                    <span class="f">
+                      {{contact}}
+                </span>
+                    <span class="s">
+                      {{contactValue}}
+                </span>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="middle">
+            <div class="table">
+                <table border="0">
+                    <tbody>
+                        <tr>
+                            <th>
+                                <div>
+                                    {{index}}
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    {{productName}}
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    {{productNumber}}
+                                </div>
+                            </th>
+                            <th>
+                                <div>
+                                    {{productPicture}}
+                                </div>
+                            </th>
+                            {{if productPrice}}
+                            <th>
+                                <div>
+                                    {{productPrice}}
+                                </div>
+                            </th>
+                            {{/if}}
+                            <th>
+                                <div>
+                                    {{productCount}}
+                                </div>
+                            </th>
+                            {{if productPrice}}
+                            <th>
+                                <div>
+                                    {{productSingleSum}}
+                                </div>
+                            </th>
+                            {{/if}}
+                        </tr>
+                        {{each tableList}}
+                        <tr>
+                            <td>
+                                <div>
+                                    {{$value.index2}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{$value.name}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{$value.number}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <img src={{$value.media}}>
+                                </div>
+                            </td>
+                            {{if productPrice}}
+                            <td>
+                                <div>
+                                    {{moneyValue+' '+$value.price}}
+                                </div>
+                            </td>
+                            {{/if}}
+                            <td>
+                                <div>
+                                    {{$value.count}}
+                                </div>
+                            </td>
+                            {{if productPrice}}
+                            <td>
+                                <div>
+                                    {{moneyValue+' '+$value.singleSum}}
+                                </div>
+                            </td>
+                            {{/if}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            {{if productPrice}}
+            <div class="calu">
+                <div>
+                    <div class="f w" v-show="!toggleEnglish">{{sum}} &nbsp;</div>
+                    <div class="s">{{moneyValue+' '+sumValue}}</div>
+                </div>
+                <div>
+                    <div class="f w">{{tax}} &nbsp;</div>
+                    <div class="s">
+                        {{moneyValue+' '+taxValue}}
+                    </div>
+                </div>
+                <div>
+                    <div class="f w">{{discount}}&nbsp;</div>
+                    <div class="s">
+                        {{moneyValue+' '+discountValue}}
+                    </div>
+                </div>
+                <div>
+                    <div class="f w">{{bigSum}}</div>
+                    <div class="s">{{moneyValue+' '+bigSumValue}}</div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            {{/if}}
+            <div class="board">
+                <div class="board-c">
+                    <span class="f customer-board">{{board}}</span>
+                    <div class="s">
+                        {{boardValue}}
+                    </div>
+                </div>
+                <div>
+                    <span class="f admin-board">{{adminBoard}}</span>
+                    <div class="s">
+                        {{adminBoardValue}}
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="bottom">
+            <div class="confirm">Confirmation</div>
+            <div class="b">
+                <div class="left">
+                    <div>Seller:</div>
+                    <div>Company chop:</div>
+                    <div>Date:</div>
+                </div>
+                <div class="right">
+                    <div>Buyer:</div>
+                    <div>Company chop:</div>
+                    <div>Date:</div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    #orderPage {
+        font-family: "Microsoft Yahei";
+        width: 720px;
+        padding: 0 10px;
+        margin: 0 auto;
+        font-weight: 100;
+    }
+
+    .head {
+        width: 100%;
+        font-size: 12px;
+        padding-bottom: 5px;
+        margin-top: 10px;
+        border-bottom: 2px solid #000;
+        text-align: center;
+    }
+    .clear{
+        clear: both;
+    }
+    .top {
+        width: inherit;
+        margin-top: 20px;
+    }
+
+    .top .title {
+        font-size: 30px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+    }
+
+    .top .extra{
+        margin-top: 10px;
+        float: right;
+    }
+    .top .info {
+        float: left;
+        margin-top: 10px;
+    }
+    .board-c{
+        margin-bottom: 10px;
+    }
+    .top .extra div,
+    .top .info div {
+        display: block;
+    }
+
+    .top .extra div .f,
+    .top .info div .f {
+        display: inline-block;
+    }
+
+    .top .extra div .s,
+    .top .info div .s {
+        display: inline-block;
+    }
+
+    .top .info {
+        align-self: flex-start;
+    }
+
+    .middle {
+        margin-top: 20px;
+        width: 100%;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+    }
+
+    .w {
+        font-weight: 600;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    .table img {
+        width: 65%;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid darkgray;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    td>div,
+    th>div {
+        word-wrap: break-word;
+        word-break: normal;
+        margin: 0 auto;
+    }
+
+    th:nth-child(1)>div,
+    td:nth-child(1)>div {
+        width: 50px;
+    }
+
+    th:nth-child(3)>div,
+    td:nth-child(3)>div {
+        width: 90px;
+    }
+
+    th:nth-child(4)>div,
+    td:nth-child(4)>div {
+        width: 150px;
+    }
+
+    th:nth-child(5)>div,
+    td:nth-child(5)>div {
+        width: 100px;
+    }
+
+    th:nth-child(6)>div,
+    td:nth-child(6)>div {
+        width: 70px;
+    }
+
+    th:nth-child(7)>div,
+    td:nth-child(7)>div {
+        width: 100px;
+    }
+
+    .calu{
+        margin-top: 10px;
+        float: right;
+    }
+    .board {
+        margin-top: 10px;
+        float: left;
+    }
+
+    .calu div,
+    .board div {
+        display: block;
+    }
+
+    .calu div .f,
+    .board div .f {
+        display: inline-block;
+    }
+
+    .calu div .s,
+    .board div .s {
+        display: inline-block;
+    }
+
+
+    .bottom {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .confirm {
+        width: 100%;
+        padding-bottom: 5px;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .b {
+        width: inherit;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .b .left{
+        float: left;
+    }
+    .b .right {
+        float: right;
+        margin-left: 30%;
+    }
+
+    .b .left div,
+    .b .right div {
+        height: 55px;
+        font-size: 15px;
+    }
+    .b .left div{
+        text-align: right;
+    }
+    .b .right div{
+        text-align: left;
+    }
+</style>
+
+</html>
