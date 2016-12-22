@@ -5,7 +5,7 @@
       <div class="process-go"  v-bind:style="{width:processBar.process}"></div>
     </div>
     <div class="header">
-      <span class="title">新士域后台管理系统</span>
+      <span class="title">后台管理系统</span>
       <span class="log">
         <span @click="clickLogout" class="logout">注销</span>
       </span>

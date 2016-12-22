@@ -17,8 +17,8 @@
 			})
 			var infowindow;
 			var infoWindowContent = '<div class="infowindow-content">' +
-				'<div class="amap-info-header">广州新士域保龄球实业有限公司</div>' +
-				'<div class="amap-info-body">Guangzhou Xinshiyu Industry Co.,Ltd</div>';
+				'<div class="amap-info-header">xxxxxxxxxxxxxx</div>' +
+				'<div class="amap-info-body">xxxxxxxxxxxxxxxxx</div>';
 
 			map.plugin('AMap.AdvancedInfoWindow', function() {
 				infowindow = new AMap.AdvancedInfoWindow({
