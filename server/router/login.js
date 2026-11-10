@@ -4,22 +4,19 @@ var cry = require('../lib/cry');
 
 module.exports = function*(next) {
     var cookieVerify = cry.de(this.cookies.get('verify'));
-    if (cookieVerify == this.request.body.verify) {
+    if (/^\d{4}$/.test(cookieVerify) && cookieVerify === String(this.request.body.verify)) {
         var ctx=this;
         try {
-            var p = new Promise(function(resolve, reject) {
-                db.Admin.valida({
-                    username: ctx.request.body.username,
-                    password: md5(ctx.request.body.password)
-                },function(err,doc){
-                    if(err){
-                        reject(err);
-                    }else{
-                        resolve(doc);
-                    }
-                })
+            if (typeof ctx.request.body.username !== 'string' || typeof ctx.request.body.password !== 'string') {
+                throw new TypeError('Credentials must be strings');
+            }
+            var a = yield db.Admin.valida({
+                username: ctx.request.body.username,
+                password: md5(ctx.request.body.password)
             });
-            var a = yield p;
+            if (!a) {
+                throw new Error('Invalid credentials');
+            }
             this.body = { err: false, limit: a.limit };
             var t=[];
             var v=t.concat(a.limit);

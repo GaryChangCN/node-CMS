@@ -18,7 +18,7 @@ module.exports = function*(next) {
                         var _id=value._id;
                         return _id.toString();
                     }).then(function(_id){
-                        return db.Group.update({stage:'root'},{$push:{children:_id}},{upsert:true}).exec();
+                        return db.Group.updateOne({stage:'root'},{$push:{children:_id}},{upsert:true}).exec();
                     })
                     ctx.body = {
                         err: false,
@@ -44,7 +44,7 @@ module.exports = function*(next) {
                     }).then(function(value) {
                         return value._id;
                     }).then(function(_id) {
-                        return db.Group.update({
+                        return db.Group.updateOne({
                             _id: parentId
                         }, {
                             $push: {
@@ -74,7 +74,7 @@ module.exports = function*(next) {
                     }).then(function(value) {
                         return value._id;
                     }).then(function(_id) {
-                        return db.Group.update({
+                        return db.Group.updateOne({
                             _id: parentId
                         }, {
                             $push: {
@@ -95,7 +95,7 @@ module.exports = function*(next) {
                 var parentId = ctx.request.body.parent;
                 var productId = ctx.request.body.product;
                 try {
-                    var a = yield db.Group.update({ _id: parentId }, { $push: { children: productId.toString() } }).exec();
+                    var a = yield db.Group.updateOne({ _id: parentId }, { $push: { children: productId.toString() } }).exec();
                     ctx.body = {
                         err: false,
                         state: true
@@ -109,7 +109,7 @@ module.exports = function*(next) {
                 var parentId = ctx.request.body.parent;
                 var productId = ctx.request.body.product;
                 try {
-                    var a = yield db.Group.update({ _id: parentId }, { $pull: { children: productId.toString() } }).exec();
+                    var a = yield db.Group.updateOne({ _id: parentId }, { $pull: { children: productId.toString() } }).exec();
                     ctx.body = {
                         err: false,
                         state: true

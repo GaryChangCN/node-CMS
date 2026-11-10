@@ -10,7 +10,7 @@ module.exports = function*(next) {
                 if (value.where != "recycle") {
                     return false;
                 } else {
-                    return db.Order.remove({ _id: _id }).exec();
+                    return db.Order.deleteOne({ _id: _id }).exec();
                 }
             });
             if (a) {

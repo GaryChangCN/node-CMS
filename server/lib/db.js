@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/bowling');
-mongoose.Promise = global.Promise;
+// Treat request-supplied operator objects as values, not query operators.
+mongoose.set('sanitizeFilter', true);
+// Preserve filters on legacy fields rather than silently widening a query.
+mongoose.set('strictQuery', false);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/bowling').catch(function(error) {
+    console.error('MongoDB connection failed:', error.message);
+    process.exitCode = 1;
+});
 var Schema = mongoose.Schema;
 
 var adminSchema = new Schema({
@@ -16,9 +22,12 @@ var adminSchema = new Schema({
     }
 });
 
-adminSchema.statics.valida = function(obj, cb) {
-    this.findOne({ username: obj.username, password: obj.password }, cb);
-}
+adminSchema.statics.valida = function(obj) {
+    if (!obj || typeof obj.username !== 'string' || typeof obj.password !== 'string') {
+        return Promise.reject(new TypeError('Credentials must be strings'));
+    }
+    return this.findOne({ username: obj.username, password: obj.password }).exec();
+};
 
 var Admin = mongoose.model('admin', adminSchema);
 

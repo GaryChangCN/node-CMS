@@ -3,7 +3,7 @@ var db = require('../../lib/db');
 module.exports = function*(next) {
     try {
         var kind=this.params.kind;
-        var a = yield db.Media.count({type: kind}).exec();
+        var a = yield db.Media.countDocuments({type: kind}).exec();
         this.body = {
             err: false,
             state: true,

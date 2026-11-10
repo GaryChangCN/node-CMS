@@ -55,14 +55,15 @@ app.use(hotMiddleware)
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 
-module.exports = app.listen(port, function(err) {
+// This legacy development server must never be exposed to the public network.
+module.exports = app.listen(port, '127.0.0.1', function(err) {
     if (err) {
         console.log(err)
         return
     }
     // var uri = 'http://localhost:' + port
     // console.log('Listening at ' + uri + '\n')
-    var uri = 'http://admin.b.com'
+    var uri = 'http://127.0.0.1:' + port
     console.log('Listening at ' + uri + '\n')
     opn(uri)
 })

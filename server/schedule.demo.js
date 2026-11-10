@@ -55,36 +55,23 @@ function startSchedule() {
                     archive.finalize();
                     setTimeout(function() {
                         var qiniu = require("qiniu");
-                        qiniu.conf.ACCESS_KEY = '';
-                        qiniu.conf.SECRET_KEY = '';
-                        bucket = 'backupdatabase';
+                        // Set these in the environment; never commit cloud credentials.
+                        var mac = new qiniu.auth.digest.Mac(process.env.QINIU_ACCESS_KEY, process.env.QINIU_SECRET_KEY);
+                        var bucket = process.env.QINIU_BUCKET || 'backupdatabase';
                         var date = new Date();
-                        var time = date.getFullYear() + "-" + (~~date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getHours() + "-" + date.getMinutes();
-                        key = time + ".zip";
-
-                        function uptoken(bucket, key) {
-                            var putPolicy = new qiniu.rs.PutPolicy(bucket + ":" + key);
-                            return putPolicy.token();
-                        }
-                        token = uptoken(bucket, key);
-                        filePath = path.normalize("c:\\beifen\\" + max + ".zip");
-
-                        function uploadFile(uptoken, key, localFile) {
-                            var extra = new qiniu.io.PutExtra();
-                            qiniu.io.putFile(uptoken, key, localFile, extra, function(err, ret) {
-                                if (!err) {
-                                    logger.info("已将最近一天数据库副本储存到七牛云");
-                                    fs.remove(path.normalize("c:\\beifen\\" + max + ".zip"), function(err) {
-                                        if (err) {
-                                            throw err;
-                                        }
-                                    })
-                                } else {
-                                    throw err;
-                                }
-                            });
-                        }
-                        uploadFile(token, key, filePath);
+                        var key = date.toISOString().replace(/[:.]/g, '-') + '.zip';
+                        var policy = new qiniu.rs.PutPolicy({ scope: bucket + ':' + key });
+                        var token = policy.uploadToken(mac);
+                        var filePath = path.normalize("c:\\beifen\\" + max + ".zip");
+                        var uploader = new qiniu.form_up.FormUploader(new qiniu.conf.Config());
+                        uploader.putFile(token, key, filePath, new qiniu.form_up.PutExtra(), function(err, ret, info) {
+                            if (err || !info || info.statusCode !== 200) {
+                                logger.error(err || new Error('Qiniu backup upload failed'));
+                                return;
+                            }
+                            logger.info("已将最近一天数据库副本储存到七牛云");
+                            fs.remove(filePath, function(error) { if (error) logger.error(error); });
+                        });
                     }, 5000);
                 }
             })();

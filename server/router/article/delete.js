@@ -17,9 +17,9 @@ module.exports = function*(next) {
                 });
                 return array;
             }).then(function(array){
-                return db.Article.update({type:'category'},{$set:{array:array}}).exec();
+                return db.Article.updateOne({type:'category'},{$set:{array:array}}).exec();
             }).then(function(){
-                return db.Article.remove({_id:_id}).exec();
+                return db.Article.deleteOne({_id:_id}).exec();
             });
             this.body = {
                 state: true,

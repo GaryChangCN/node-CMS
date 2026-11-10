@@ -11,7 +11,7 @@ module.exports = function*(next) {
                 change.password = m;
             }
             delete change.superUser;
-            var a = yield db.Admin.update({ _id: _id }, { $set: change }).exec();
+            var a = yield db.Admin.updateOne({ _id: _id }, { $set: change }).exec();
             this.body = {
                 err: false,
                 state: true

@@ -10,7 +10,7 @@ module.exports = function*(next) {
                 type: type,
                 array: array
             }
-            var a=yield db.Style.update({ type: type }, data,{upsert:true});
+            var a=yield db.Style.updateOne({ type: type }, data,{upsert:true});
             this.body = {
                     state: true,
                     err: false
