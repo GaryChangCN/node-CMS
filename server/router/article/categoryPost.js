@@ -11,7 +11,7 @@ module.exports = function*(next) {
                     type: type,
                     array: array
                 }
-                yield db.Article.update({ type: type }, data, { upsert: true });
+                yield db.Article.updateOne({ type: type }, data, { upsert: true });
                 this.body = {
                     state: true,
                     err: false

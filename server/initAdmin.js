@@ -13,13 +13,11 @@ process.stdin.on('data', function(chunk) {
             superUser:true,
             limit: [1, 2, 3, 4, 5, 6]
         });
-        s.save(function(err){
-            if(err){
-              console.log("创建失败");
-            }else{
-              console.log("创建成功");
-              process.exit();
-            }
+        s.save().then(function() {
+            console.log("创建成功");
+            process.exit();
+        }).catch(function() {
+            console.log("创建失败");
         });
     });
 });

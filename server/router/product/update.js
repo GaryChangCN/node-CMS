@@ -5,7 +5,7 @@ module.exports = function*(next) {
         try {
             var _id=this.request.body._id;
             var change=JSON.parse(this.request.body.change);
-            var a=yield db.Product.update({ _id: _id }, { $set: change }).exec();
+            var a=yield db.Product.updateOne({ _id: _id }, { $set: change }).exec();
             this.body={
                 err:false,
                 state:true

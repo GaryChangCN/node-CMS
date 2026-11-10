@@ -10,7 +10,7 @@ module.exports = function*(next) {
                 if(value.superUser){
                     return false;
                 }else{
-                    return db.Admin.remove({ _id: _id }).exec();
+                    return db.Admin.deleteOne({ _id: _id }).exec();
                 }
             });
             if(a){

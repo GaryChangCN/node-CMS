@@ -6,7 +6,7 @@ module.exports = function*(next) {
         try {
             var ctx = this;
             var username = this.request.body.username;
-            var a = yield db.Admin.count({ username: username }).exec().then(function(value) {
+            var a = yield db.Admin.countDocuments({ username: username }).exec().then(function(value) {
                 return value;
             }).then(function(value) {
                 if (value > 0) {

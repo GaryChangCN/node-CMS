@@ -22,7 +22,7 @@ module.exports = function*(next) {
                 order: order,
                 number: number
             });
-            var a = yield db.Product.count({ number: number }).exec().then(function(value) {
+            var a = yield db.Product.countDocuments({ number: number }).exec().then(function(value) {
                 if (value > 0) {
                     return false;
                 } else {
@@ -40,7 +40,7 @@ module.exports = function*(next) {
                         return false;
                     } else {
                         var productId = value._id;
-                        return db.Group.update({ _id: parentId }, { $push: { children: productId.toString() } }).exec().then(function () {
+                        return db.Group.updateOne({ _id: parentId }, { $push: { children: productId.toString() } }).exec().then(function () {
                             return productId;
                         });
                     }

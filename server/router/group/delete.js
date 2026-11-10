@@ -27,14 +27,14 @@ module.exports = function*(next) {
                         });
                         var tmp = [];
                         sum.forEach(function(e) {
-                            tmp.push(db.Group.remove({ _id: e }));
+                            tmp.push(db.Group.deleteOne({ _id: e }));
                         });
                         return Promise.all(tmp);
                     })
                     // .then(function(){
-                    //     return db.Group.update({stage:'root'},{$pull:{children:_id}}).exec();
+                    //     return db.Group.updateOne({stage:'root'},{$pull:{children:_id}}).exec();
                     // })
-                    yield db.Group.update({stage:'root'},{$pull:{children:_id}}).exec();
+                    yield db.Group.updateOne({stage:'root'},{$pull:{children:_id}}).exec();
                     ctx.body = {
                         err: false,
                         state: true
@@ -44,13 +44,13 @@ module.exports = function*(next) {
                     var parent_id = this.request.body.parent;
                     var tmp = [];
                     var a = yield db.Group.findOne({ _id: _id }).exec().then(function(value) {
-                        tmp.push(db.Group.update({ _id: parent_id }, { $pull: { children: _id } }).exec());
+                        tmp.push(db.Group.updateOne({ _id: parent_id }, { $pull: { children: _id } }).exec());
                         return value.children;
                     }).then(function(value) {
                         value.forEach(function(e) {
-                            tmp.push(db.Group.remove({ _id: e }).exec());
+                            tmp.push(db.Group.deleteOne({ _id: e }).exec());
                         });
-                        tmp.push(db.Group.remove({ _id: _id }).exec());
+                        tmp.push(db.Group.deleteOne({ _id: _id }).exec());
                         return Promise.all(tmp);
                     });
                     ctx.body = {
@@ -60,7 +60,7 @@ module.exports = function*(next) {
                     break;
                 case 'third':
                     var parent_id = this.request.body.parent;
-                    var a = yield Promise.all([db.Group.remove({ _id: _id }).exec(), db.Group.update({ _id: parent_id }, { $pull: { children: _id } }).exec()]);
+                    var a = yield Promise.all([db.Group.deleteOne({ _id: _id }).exec(), db.Group.updateOne({ _id: parent_id }, { $pull: { children: _id } }).exec()]);
                     ctx.body = {
                         err: false,
                         state: true

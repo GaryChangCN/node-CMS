@@ -47,28 +47,28 @@ module.exports = function*(next) {
                     list:a
                 }
             }else if(_id=="extra"){
-                var pinsetler =yield db.Group.count({extra:"pinsetler"}).exec().then(function(value){
+                var pinsetler =yield db.Group.countDocuments({extra:"pinsetler"}).exec().then(function(value){
                     if(value==0){
                         return false;
                     }else{
                         return true;
                     }
                 });
-                var lane=yield db.Group.count({extra:"lane"}).exec().then(function(value){
+                var lane=yield db.Group.countDocuments({extra:"lane"}).exec().then(function(value){
                     if(value==0){
                         return false;
                     }else{
                         return true;
                     }
                 });
-                var scroing=yield db.Group.count({extra:"scroing"}).exec().then(function(value){
+                var scroing=yield db.Group.countDocuments({extra:"scroing"}).exec().then(function(value){
                     if(value==0){
                         return false;
                     }else{
                         return true;
                     }
                 });
-                var oiling=yield db.Group.count({extra:"oiling"}).exec().then(function(value){
+                var oiling=yield db.Group.countDocuments({extra:"oiling"}).exec().then(function(value){
                     if(value==0){
                         return false;
                     }else{

@@ -7,10 +7,12 @@
 
 ## 使用
 
+> 此版本要求 Node >=22.12.0、MongoDB >=4.2，并改用 Chromium 生成 PDF。升级现有部署前请先阅读 [安全迁移说明](doc/security-migration.md)，尤其是私有 cry.js、数据库及浏览器沙箱要求。
+
 ```bash
 git clone 
 cd f2e/admin && npm install
-cd server && npm install
+cd server && npm ci
 cd f2e/admin && npm run dev (npm run build)
 cd server && npm run dev (npm run product)
 cd server && npm run render (npm run render-product)
@@ -37,7 +39,7 @@ cd server && node schedule.js
 
 ### 特殊化
 
-网站支持中英文切换，支持保存订单（询单）到PDF（使用`phantomjs`），支持页面样式修改（包括不限于图片文字修改）,用户端为响应式设计仅适配PC和移动端。
+网站支持中英文切换，支持保存订单（询单）到PDF（使用沙箱内的 Chromium），支持页面样式修改（包括不限于图片文字修改）,用户端为响应式设计仅适配PC和移动端。
 
 ## API 说明
 

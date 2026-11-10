@@ -15,7 +15,7 @@ module.exports = function*(next) {
                 type:'article',
                 time:new Date()
             };
-            yield db.Article.update({_id:_id},data).exec();
+            yield db.Article.updateOne({_id:_id},data).exec();
             this.body = {
                 state: true,
                 err: false

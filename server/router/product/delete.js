@@ -4,8 +4,8 @@ module.exports = function*(next) {
     if (this.method.toUpperCase() == "DELETE") {
         try {
             var _id = this.request.body._id;
-            yield db.Product.remove({ _id: _id }).exec();
-            yield db.Group.update({}, { $pull: { children: _id.toString() } }, { multi: true }).exec();
+            yield db.Product.deleteOne({ _id: _id }).exec();
+            yield db.Group.updateMany({}, { $pull: { children: _id.toString() } }).exec();
             this.body = {
                 err: false,
                 state: true

@@ -7,9 +7,9 @@ module.exports = function*(next) {
         }
         delete require.cache[require.resolve('./navBar')]
         var navBar = yield require('./navBar');
-        var first = yield db.Group.findOne({children:{$in:[second]}},'name englishName type').exec();
+        var first = yield db.Group.findOne({children:second},'name englishName type').exec();
         var secondInfo = yield db.Group.findOne({ _id: second },'name englishName children type').exec();
-        var isGroup = yield db.Group.count({ _id: secondInfo.children[0] }).exec().then(function(value) {
+        var isGroup = yield db.Group.countDocuments({ _id: secondInfo.children[0] }).exec().then(function(value) {
             if (value > 0) {
                 return true;
             } else {

@@ -2,7 +2,7 @@ var db = require('../../lib/db');
 
 module.exports = function*(next) {
     try {
-        var a = yield db.Product.count({}).exec();
+        var a = yield db.Product.countDocuments({}).exec();
         this.body = {
             err: false,
             state: true,

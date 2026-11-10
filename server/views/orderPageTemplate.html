@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
     <title></title>
 </head>
 
@@ -140,7 +141,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <img src={{$value.media}}>
+                                    {{if $value.media}}<img src="{{$value.media}}">{{/if}}
                                 </div>
                             </td>
                             {{if productPrice}}
