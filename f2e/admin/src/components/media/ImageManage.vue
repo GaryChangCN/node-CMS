@@ -5,7 +5,7 @@
         <div>
             <div>
                 <form ref="uploadForm">
-                    <label class="upload-button" for="picfile"><i class="el-icon-upload"></label>
+                    <label class="upload-button" for="picfile"><i class="el-icon-upload"></i></label>
                     <input multiple="multiple" type="file" name="file" id="picfile" accept="image/png, image/jpeg, image/gif" ref="picture" @change="getPicture" class="el-upload__input">
                 </form>
             </div>

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Element from 'element-ui';
 import VueRouter from 'vue-router';
 import axios from 'axios';
-import VueAxios from 'vue-axios';
 import store from './store';
 import Rem from './lib/Rem';
 import 'element-ui/lib/theme-default/index.css';
@@ -11,7 +10,7 @@ import './assets/main.less';
 Rem();
 
 Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
+Vue.prototype.axios = axios;
 Vue.use(Element);
 
 
@@ -31,7 +30,7 @@ const ProductAdd = resolve => require(['./components/product/ProductAdd.vue'], r
 const Style = resolve => require(['./components/page/Style.vue'], resolve);
 const ArticleAdd = resolve => require(['./components/article/Article.vue'], resolve);
 const IndexStyle = resolve => require(['./components/page/IndexStyle.vue'], resolve);
-const navbarStyle = resolve => require(['./components/page/navbarStyle.vue'], resolve);
+const navbarStyle = resolve => require(['./components/page/NavbarStyle.vue'], resolve);
 const Project = resolve => require(['./components/page/Project.vue'], resolve);
 const Center = resolve => require(['./components/page/Center'], resolve);
 const Support = resolve => require(['./components/page/Support.vue'], resolve);

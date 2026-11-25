@@ -11,9 +11,9 @@
 
 ```bash
 git clone 
-cd f2e/admin && npm install
+(cd f2e/admin && npm ci --legacy-peer-deps)
 cd server && npm ci
-cd f2e/admin && npm run dev (npm run build)
+(cd f2e/admin && npm run dev) # or npm run build / npm test
 cd server && npm run dev (npm run product)
 cd server && npm run render (npm run render-product)
 cd server && node schedule.js
@@ -26,6 +26,8 @@ cd server && node schedule.js
 #每周日23点上传最后次备份到七牛云。
 
 ```
+
+管理端开发服务器只监听本机，不应开放公网访问；旧版 Vue、富文本编辑器及构建链尚未完整迁移。
 
 ## 架构
 

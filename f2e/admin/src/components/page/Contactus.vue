@@ -17,7 +17,7 @@
                             <div class="right"><el-input v-model="item2.nameEn" placeholder="英文名"></el-input></div>
                         </div>
                         <div class="info">
-                            <div class="left"><el-input v-model="item2.position" placeholder="中文职位"></div>
+                            <div class="left"><el-input v-model="item2.position" placeholder="中文职位"></el-input></div>
                             <div class="right"><el-input v-model="item2.positionEn" placeholder="英文职位"></el-input></div>
                         </div>
                         <div class="info">
