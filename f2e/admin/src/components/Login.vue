@@ -15,7 +15,7 @@
         </div>
       </el-form-item>
       <el-form-item class="lastItem">
-        <el-button type="primary" @click.native.prevent="handleSubmit">登录
+        <el-button type="primary" @click.native.prevent="handleSubmit">登录</el-button>
       </el-form-item>
     </el-form>
   </div>

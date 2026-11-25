@@ -36,7 +36,7 @@
                 </div>
                 <div class="ppt">
                     <div class="pptTitle">
-                        <span class="span">球馆内页展示图片<span>
+                        <span class="span">球馆内页展示图片</span>
                         <el-button icon="plus" type="primary" @click.native="addPpt(index)" size="mini"></el-button>
                     </div>
                     <div v-show="item.ppt.length==0">暂时为空</div>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="ppt">
                     <div class="pptTitle rotationTitle">
-                        <span class="span">球馆内页轮播图<span>
+                        <span class="span">球馆内页轮播图</span>
                         <el-button icon="plus" type="primary"  @click.native="addRotation(index)" size="mini"></el-button>
                     </div>
                     <div v-show="item.rotation.length==0">暂时为空</div>
